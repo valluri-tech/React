@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom';
-import myErrorBoundary from './MyErrorBoundry';
-//import {add} from './math';
-const OtherComponent = React.lazy(() => import('./OtherComponent'));
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
+import MyErrorBoundary from './MyErrorBoundry';
+//import {add} from './math';
+const OtherComponent = lazy(() => import('./OtherComponent'));
+
+const Home = lazy(() => import('./routes/Home'));
+const About = lazy(() => import('./routes/About'));
 
 class App extends React.Component {
 
@@ -19,11 +23,15 @@ class App extends React.Component {
         return (
             <div>
                 {/*{  this.getAddition(5,5)   }*/}
-                <myErrorBoundary>
-                    <React.Suspense fallback={<div>Loading Other Component</div>} >
-                        <OtherComponent />
-                    </React.Suspense>
-                </myErrorBoundary>
+                <Router>
+                    <Suspense fallback={<div>Loading Other Component</div>} >
+                        <Switch>
+                            <Route exact path="/" component={Home} />
+                            <Route path="/about" component={About} />
+                        </Switch>
+                        {/*<OtherComponent />*/}
+                    </Suspense>
+                </Router>
             </div>
         );
     }
