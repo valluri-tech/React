@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import myErrorBoundary from './MyErrorBoundry';
 //import {add} from './math';
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
+
 
 class App extends React.Component {
 
@@ -17,9 +19,11 @@ class App extends React.Component {
         return (
             <div>
                 {/*{  this.getAddition(5,5)   }*/}
-                <React.Suspense fallback={<div>Loading Other Component</div>} >
-                    <OtherComponent />
-                </React.Suspense>
+                <myErrorBoundary>
+                    <React.Suspense fallback={<div>Loading Other Component</div>} >
+                        <OtherComponent />
+                    </React.Suspense>
+                </myErrorBoundary>
             </div>
         );
     }
