@@ -12,3 +12,8 @@ export const themes = {
 };
 
 export const ThemeContext = React.createContext(themes.light);
+
+export const ThemeContext2 = React.createContext({
+    theme : themes.light,
+    toggleTheme : ()=>{},
+});

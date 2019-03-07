@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ThemedButton from './themed-button';
-import { themes, ThemeContext } from './theme-context';
+import { themes, ThemeContext, ThemeContext2 } from './theme-context';
+import ThemeTogglerButton from './theme-toggler-button';
 
 function ToolBar(props) {
     return (
@@ -14,7 +15,6 @@ function ToolBar(props) {
 }
 
 class App extends React.Component {
-
     state = {
         theme: themes.dark,
     }
@@ -37,4 +37,44 @@ class App extends React.Component {
     }
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+//ReactDOM.render(<App />, document.getElementById('root'));
+
+
+
+class App2 extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.toggleTheme = ()=> {
+            this.setState(old =>
+                (
+                    { theme: old.theme === themes.light ? themes.dark : themes.light }
+                )
+            );
+        }
+
+        this.state = {
+            theme: themes.dark,
+            toggleTheme: this.toggleTheme
+        }
+
+    }
+
+    render() {
+        return (
+            <div>
+                <ThemeContext2.Provider value={this.state}>
+                    <Content />
+                </ThemeContext2.Provider>
+            </div>
+        );
+    }
+}
+
+function Content() {
+    return (
+        <ThemeTogglerButton />
+    );
+}
+
+ReactDOM.render(<App2 />, document.getElementById('root'));
