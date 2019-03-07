@@ -1,16 +1,14 @@
 import React from 'react';
-const LoginButtonTextContext = React.createContext('Login');
+import { LoginButtonTextContext } from './index';
 
 export default class LoginButton extends React.Component {
-    static contextType = LoginButtonTextContext;
-
     render() {
         return (
             <div>
                 <LoginButtonTextContext.Consumer>
                     {
                         (context) => {
-                            return(<div>{context}</div>)
+                            return(<div><input type="button" value={context} /></div>)
                         }
                     }
                 </LoginButtonTextContext.Consumer>

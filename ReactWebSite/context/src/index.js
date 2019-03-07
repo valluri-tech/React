@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import HeaderContent from './HeaderContent'
 
-const LoginButtonTextContext = React.createContext('Login');
+export const LoginButtonTextContext = React.createContext('Login');
 
 const App = () => {
     return (
