@@ -8,4 +8,5 @@
 
 5. We have also used context api so that a nested component somewhere deep can update the context.
 
-6. NOTE : Did not understand the point as to why we had to put 'toggleTheme' function inside the constrcutor.
+6. +NOTE : Did not understand the point as to why we had to put 'toggleTheme' function inside the constrcutor.
+   -NOTE : moved the function outside the constructor and Arrowed it.

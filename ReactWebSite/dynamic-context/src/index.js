@@ -45,19 +45,19 @@ class App2 extends React.Component {
 
     constructor(props) {
         super(props);
-        this.toggleTheme = ()=> {
-            this.setState(old =>
-                (
-                    { theme: old.theme === themes.light ? themes.dark : themes.light }
-                )
-            );
-        }
 
         this.state = {
             theme: themes.dark,
             toggleTheme: this.toggleTheme
         }
+    }
 
+    toggleTheme = ()=> {
+        this.setState(old =>
+            (
+                { theme: old.theme === themes.light ? themes.dark : themes.light }
+            )
+        );
     }
 
     render() {
