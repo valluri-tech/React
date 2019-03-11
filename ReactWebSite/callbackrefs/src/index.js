@@ -32,4 +32,39 @@ class CustomTextInput extends React.Component {
     }
 }
 
-ReactDOM.render(<CustomTextInput />, document.getElementById('root'));
+//ReactDOM.render(<CustomTextInput />, document.getElementById('root'));
+
+
+//This is to show how we pass callback refs betweeen components.
+
+function Child(props){
+    return(
+        <input type='text' ref={props.inputRef}/>
+    );
+}
+
+class Parent extends React.Component{
+
+    constructor(props){
+        super(props);
+        this.childInputRef = null;
+    }
+
+    InputCallbackRef = (ele)=>{
+        this.childInputRef = ele;
+    }
+
+    componentDidMount(){
+        if(this.childInputRef){
+        this.childInputRef.focus();
+        }
+    }
+    render = ()=>{
+        return(
+            <div>
+                <Child inputRef={this.InputCallbackRef} />
+            </div>
+        );
+    }
+}
+ReactDOM.render(<Parent />, document.getElementById('root'));
