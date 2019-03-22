@@ -6,3 +6,4 @@ Refs
 CallbackRefs
 forwarding refs
 renderprops
+Higher Order Components
