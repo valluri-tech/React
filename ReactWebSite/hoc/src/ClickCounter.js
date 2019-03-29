@@ -11,6 +11,7 @@ class ClickCounter extends React.Component {
             x : (o.x + 1)
         }))
     }
+    
     render() {
         return (
             <div>
