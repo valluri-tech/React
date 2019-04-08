@@ -58,6 +58,9 @@ console.log(Name1);
 //Object destructering - to destructure a function parameters.
 //not sure if you want to pass a particular argument..?
 //worried about the order..?
+//fetchRepos(lang,minStars,maxStars,createdAfter,createdBefore){
+    //...
+//}
 fetchRepos({lang="All",minStars=0,maxStars=100,createdAfter,createdBefore}){
 //as we are receiving an object in the function we can de-structer it ..using {}
 //lang = lang || 'All';
