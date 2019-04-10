@@ -6,4 +6,7 @@ Refs
 CallbackRefs
 forwarding refs
 renderprops
-Higher Order Components
+Higher Order Components(hoc)
+destructering-props
+listsnkeys
+forms + UncontrolledComponents

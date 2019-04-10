@@ -6,7 +6,7 @@ class App extends React.Component {
 
   render(){
       const arr = this.props.input;
-      const _listItems = arr.map( (num) => 
+      const listItems = arr.map( (num) => 
       <li key={num.toString()}>
           {num}
       </li>
@@ -14,7 +14,7 @@ class App extends React.Component {
       return(
           <div>
               <ul>
-              {_listItems}
+              {listItems}
               </ul>
           </div>
       );
