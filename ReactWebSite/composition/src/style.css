@@ -1,0 +1,12 @@
+.FancyBorder{
+    padding: 10px 10px;
+    border: 3px solid;
+}
+
+.FancyBorder-blue{
+    border-color: blue
+}
+
+.FancyBorder-red{
+    border-color:red
+}
