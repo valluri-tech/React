@@ -10,3 +10,8 @@
 
 6. +NOTE : Did not understand the point as to why we had to put 'toggleTheme' function inside the constrcutor.
    -NOTE : moved the function outside the constructor and Arrowed it.
+   
+7.   http://2ality.com/2017/07/class-fields.html
+     Open babel and write javscript code to see how it transforms.
+8. Context is kind of the only situation where it's recommended to add a function to state.
+9.  

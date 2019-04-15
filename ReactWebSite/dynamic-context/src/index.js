@@ -43,22 +43,51 @@ class App extends React.Component {
 
 class App2 extends React.Component {
 
-    constructor(props) {
-        super(props);
+    // constructor(props) {
+    //     super(props);
 
-        this.state = {
-            theme: themes.dark,
-            toggleTheme: this.toggleTheme
-        }
-    }
+    //     this.state = {
+    //         theme: themes.dark,
+    //         toggleTheme: this.toggleTheme
+    //     }
+    // }
 
-    toggleTheme = ()=> {
+
+// Initializers are always executed before the constructor.
+// But if you write a default constructor - out all the initialzers inside the constructor IN ORDER - use babel to find out more.
+//below code works as-of-now : if state is initlized first and if the toggletheme is delared down - this wont work
+    toggleTheme = () => {
         this.setState(old =>
             (
                 { theme: old.theme === themes.light ? themes.dark : themes.light }
             )
         );
     }
+    state = {
+        theme: themes.dark,
+        toggleTheme: this.toggleTheme
+    }
+
+//And if you would like to put everything in the constructor - it looks like below    
+/*constructor(props){
+    
+    super(props);
+
+    this.toggleTheme = () => {
+        this.setState(old =>
+            (
+                { theme: old.theme === themes.light ? themes.dark : themes.light }
+            )
+        );
+    }
+
+    this.state = {
+        theme: themes.dark,
+        toggleTheme: this.toggleTheme
+    }
+    //   By the time state is constructed it must know what is toggleTheme.
+    //   So define the function "this.toggleTheme = () => {" above it.
+}*/
 
     render() {
         return (
