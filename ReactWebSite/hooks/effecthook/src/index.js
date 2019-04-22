@@ -17,7 +17,7 @@ function App() {
     );
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+//ReactDOM.render(<App />, document.getElementById('root'));
 
 //1. useEffect - adds the ability to perform side effects(DidMount,DidUpdate,WillUnmount) from a function component.
 //2. When you call useEffect : you are telling React to run your "effect" function - after flushing changes to the DOM
@@ -30,7 +30,7 @@ function FriendStatus(){
     useEffect(()=>{
         //subscription calls here
         return ()=>{
-        //un-subscribe data goes here.
+        //un-subscribe data goes here - in a return function.
         }
     });
     return(
@@ -49,3 +49,26 @@ function FriendStatus(){
 //11. RULES OF HOOKS
 // - CALL HOOKS AT THE TOP LEVEL- not in loops or conditions or nested functions
 // - use hooks in RFC only
+//10.1 -> pass an array of variables as the second parameter to useeffect() as in App2 component below..
+//10.2 this will increase the performance.
+function App2(){
+    
+    const [count,setCount]= useState(0);
+
+    useEffect(()=>{
+     document.title=`you have clicked ${count} times`;
+    },[count]);
+
+    // HandleClick(e){
+    //     setCount(count+1);
+    // }
+
+    return(
+        <div>
+            <button onClick={()=>{setCount(count+1)}}>Click to increase count</button><br/><br/>
+            You have clicked {count} times
+        </div>
+    );
+
+}
+ReactDOM.render(<App2 />, document.getElementById('root'));
