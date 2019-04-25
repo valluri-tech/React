@@ -10,3 +10,7 @@ Higher Order Components(hoc)
 destructering-props : Syntactical sugar and helps in less lines of code.
 listsnkeys
 forms + UncontrolledComponents
+
+Hooks :
+    useCallback,useMemo : These Hooks Prevent unneccessary re-renders making your code way more efficient.
+    
