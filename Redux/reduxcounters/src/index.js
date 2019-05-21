@@ -1,20 +1,12 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-
-let counter = 0;
+const uudiV4 = require('uuid/v4')
 
 const Counter = (props) => {
-
-    // const deleteCounter = (e) => {
-    //     //console.log(e.target.id);
-    // }
-
     return (
         <div>
-            <br />
-            {0}
-            <br />
-            <button>+</button><button>-</button> {' '}<button id={props._id} onClick={props._deleteCounter}>Delete</button>
+            <br /> {0} <br />
+            <button>+</button><button>-</button>
             <br />
         </div>
     )
@@ -22,49 +14,64 @@ const Counter = (props) => {
 
 const App = () => {
     const [Elements, SetElements] = useState({
-        inputCollection: []
+        inputCollection: new Map()
     });
 
-    const getElement = () => {
-        //dispatchState({type:'ADD_COUNTER',uniqueKey:'some_unique_key'})
-        return <Counter _id={counter++} _deleteCounter={DeleteCounter} />
-    }
+    const [currentID, setcurrentID] = useState("");
+    
+    const makeNewCounter = () => <Counter />
 
     const AddCounter = () => {
+        const newMap = new Map(Elements.inputCollection);
+        const key = uudiV4();
+        newMap.set(key,makeNewCounter())
         SetElements({
-            inputCollection: [...(Elements.inputCollection), getElement()]
+            inputCollection:newMap
         })
     }
 
-    const DeleteCounter = (e) => {
-        //dispatchState({type:'DELETE_COUNTER',uniqueKey:'some_unique_key'})
-        //update local UI to reflect the deleted counter
-        console.log(e.target.id);
+    const DeleteCounter = ()=>{
+        const newMap = new Map(Elements.inputCollection);
+        newMap.delete(currentID);
+        SetElements({
+            inputCollection:newMap
+        })
+        setcurrentID("")
+    }
+ 
+    const listItemSelected = (e)=> {
+        setcurrentID((e.target.id).toString());
     }
 
     const ulStyle = {
         'listStyle': 'none'
     }
-
-    const divCatcher = (e) => {
-        console.log(e.target.id);
+ 
+    const liStyle = {
+        width : '150px',
+        backgroundColor:'pink',
+        paddingLeft : '20px',
+        paddingBottom : '20px',
+        marginTop:'10px'
     }
+
+    const arrElements = [...Elements.inputCollection]
     return (
         <>
             <button onClick={AddCounter}>Add Counter</button>{' '}
-            <button onClick={DeleteCounter}>Delete Counter</button>
+            <button onClick={DeleteCounter}>Delete Counter</button>{' '}
 
             <ul style={ulStyle}>
                 {
-                    Elements.inputCollection.map((value, index) => {
-                        return (
-                                <li key={index}>{value}</li>
-                        )
-                    })
+                    arrElements.map( ([key,value])=>  <li style={liStyle} key={key} id={key} onClick={listItemSelected}>{value}</li> )
                 }
             </ul>
+            {currentID}
 
         </>
     );
 }
 ReactDOM.render(<App />, document.getElementById('root'));
+
+
+ 
