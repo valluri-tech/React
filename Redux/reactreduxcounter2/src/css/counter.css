@@ -1,0 +1,9 @@
+.liSelected
+{
+    background-color: gray;
+}
+
+.liNotSelected 
+{
+    background-color: white;   
+}
